@@ -23,7 +23,7 @@ public class BoardNativeRepository {
     }
 
     public List<Board> findAll() {
-        Query query = em.createNativeQuery("select * from board_tb", Board.class);
+        Query query = em.createNativeQuery("select * from board_tb ", Board.class);
         List<Board> boards = query.getResultList();
         return boards;
     }
