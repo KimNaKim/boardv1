@@ -4,8 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class BoardController {
+
+    private final BoardService bService; // 의존성 주입
 
     @GetMapping("/")
     public String index() {
@@ -14,6 +19,7 @@ public class BoardController {
 
     @GetMapping("/boards/save-form")
     public String saveForm() {
+        bService.insert();
         return "board/save-form";
     }
 
@@ -24,6 +30,7 @@ public class BoardController {
 
     @GetMapping("/boards/{id}")
     public String detail(@PathVariable("id") int id) {
+        bService.detail(id);
         return "board/detail";
     }
 
