@@ -42,7 +42,7 @@ public class BoardNativeRepositoryTest {
         String content = "content7";
 
         // when
-        bNativeRepository.save("title7", "content7");
+        bNativeRepository.save(title, content);
 
         // eye
         List<Board> boards = bNativeRepository.findAll();
