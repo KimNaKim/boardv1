@@ -49,9 +49,7 @@ public class BoardController {
 
     // 게시글 수정 버튼 누르면 실행됨
     @PostMapping("/boards/{id}/update")
-    public String update(HttpServletRequest req, @PathVariable("id") int id) {
-        String title = req.getParameter("title");
-        String content = req.getParameter("content");
+    public String update(@PathVariable("id") int id, String title, String content) {
         bService.update(id, title, content);
         return "redirect:/boards/" + id;
     }
