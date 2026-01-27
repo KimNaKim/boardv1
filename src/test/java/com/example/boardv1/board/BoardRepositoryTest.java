@@ -57,16 +57,6 @@ public class BoardRepositoryTest {
     }
 
     @Test
-    public void findAllV2_test() {
-        // given
-
-        // when
-        boardRepository.findAllV2();
-
-        // eye
-    }
-
-    @Test
     public void save_test() {
         // given
         Board board = new Board();

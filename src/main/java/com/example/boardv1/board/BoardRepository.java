@@ -26,10 +26,6 @@ public class BoardRepository {
         return findBoards;
     }
 
-    public void findAllV2() {
-        em.createQuery("select b.id, b.title from Board b").getResultList();
-    }
-
     public Board save(Board board) {
         em.persist(board);
         return board;
