@@ -5,12 +5,14 @@
     <!-- 수정삭제버튼 -->
     <div class="d-flex justify-content-end">
         <a class="btn btn-secondary me-1" href = "/boards/{{id}}/update-form">수정</a>
-        <a class="btn btn-outline-secondary" href = "/boards/{{id}}/delete" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+        <form action="/boards/{{id}}/delete" method="post" enctype="application/x-www-form-urlencoded">
+            <button class="btn btn-outline-secondary" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>
+        </form>
     </div>
 
     <!-- 게시글내용 -->
     
-    <div>
+    <div> 
         <h2><b>{{title}}</b></h2>
         <hr />
         <div class="d-flex justify-content-end">

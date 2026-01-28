@@ -13,11 +13,13 @@ public class BoardService {
 
     // 함수 정의
     // 쓰기 코드에는 반드시 Transactional 어노테이션 필수!!
-    @Transactional
+    @Transactional // 원자성 보장을 위해 모든 게 통과했을 때만 commit, 하나라도 실패하면 rollback
     public Board insert(String title, String content) {
+        // 1. 비영속 객체 (before persist)
         Board board = new Board();
         board.setContent(content);
         board.setTitle(title);
+        // 2. persist (영속화시키기)
         Board GBoard = bRepository.save(board);
         return GBoard;
     }

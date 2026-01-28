@@ -21,7 +21,7 @@ public class BoardRepository {
     }
 
     public List<Board> findAll() {
-        Query query = (Query) em.createQuery("select b from Board b", Board.class);
+        Query query = (Query) em.createQuery("select b from Board b order by b.id desc", Board.class);
         List<Board> findBoards = query.getResultList(); // 객체지향쿼리
         return findBoards;
     }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -49,7 +50,8 @@ public class BoardController {
 
     // 게시글 수정 버튼 누르면 실행됨
     @PostMapping("/boards/{id}/update")
-    public String update(@PathVariable("id") int id, String title, String content) {
+    public String update(@PathVariable("id") int id, @RequestParam("title") String title,
+            @RequestParam("content") String content) {
         bService.update(id, title, content);
         return "redirect:/boards/" + id;
     }
@@ -63,7 +65,7 @@ public class BoardController {
     }
 
     // 게시글 삭제 버튼 누르면 실행됨
-    @GetMapping("/boards/{id}/delete")
+    @PostMapping("/boards/{id}/delete")
     public String delete(@PathVariable("id") int id) {
         bService.delete(id);
         return "redirect:/";
